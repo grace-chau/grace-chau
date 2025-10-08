@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace Chau - UI/UX Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5faf7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d5f3f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #7cb89d;
+        }
+
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #2d5f3f;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #999;
+        }
+
+        .projects {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d5f3f;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #7cb89d 0%, #a8d5ba 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2d5f3f;
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #e8f5e9;
+            color: #2d5f3f;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2.5rem;
+            color: #2d5f3f;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .case-study-section {
+            margin-bottom: 3rem;
+        }
+
+        .case-study-section h3 {
+            font-size: 1.8rem;
+            color: #2d5f3f;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-section ul {
+            color: #666;
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .case-study-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .highlight-box {
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #7cb89d;
+            margin: 2rem 0;
+        }
+
+        .highlight-box strong {
+            color: #2d5f3f;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #2d5f3f;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #2d5f3f;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Grace Chau</div>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Grace Chau</h1>
+            <p>UI/UX Designer at Northeastern University</p>
+            <p class="hero-subtitle">Crafting thoughtful digital experiences through research-driven design</p>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" onclick="openModal('planet-pesto')">
+                    <div class="project-image">PP</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Planet Pesto</h3>
+                        <p class="project-meta">UI & Level Designer | June 2025 – July 2025</p>
+                        <p class="project-description">Created UI assets and co-designed platformer game levels for a Unity-based climate action game that placed 14th out of 34 entries in IndieCade's 2025 Climate Jam.</p>
+                        <div class="project-tags">
+                            <span class="tag">Game Design</span>
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Adobe Illustrator</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('greenway')">
+                    <div class="project-image">GW</div>
+                    <div class="project-content">
+                        <h3 class="project-title">GreenWay</h3>
+                        <p class="project-meta">UX Researcher & Designer | February 2025 – March 2025</p>
+                        <p class="project-description">Designed a mobile app to solve Boston MBTA Green Line commuter pain points including delays, capacity issues, and navigation challenges through real-time updates and wayfinding.</p>
+                        <div class="project-tags">
+                            <span class="tag">UX Research</span>
+                            <span class="tag">Mobile Design</span>
+                            <span class="tag">Figma</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('sleep-survey')">
+                    <div class="project-image">SS</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sleep Survey</h3>
+                        <p class="project-meta">UX Researcher & Designer | March 2025 – April 2025</p>
+                        <p class="project-description">Researched sleep stressors and designed a dream documentation and analysis app to help users improve rest and wellbeing through sleep journaling.</p>
+                        <div class="project-tags">
+                            <span class="tag">UX Research</span>
+                            <span class="tag">Mobile Design</span>
+                            <span class="tag">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="planet-pesto-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('planet-pesto')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Planet Pesto</h2>
+                <p class="modal-subtitle">UI & Level Designer | June 2025 – July 2025</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Project Overview</h3>
+                <p>Planet Pesto is a Unity-based platformer game developed for IndieCade's 2025 Climate Jam. I served as UI and Level Designer, creating visual assets and designing engaging game levels that communicate climate action themes through gameplay.</p>
+                <div class="highlight-box">
+                    <strong>Achievement:</strong> 14th place out of 34 entries in IndieCade's 2025 Climate Jam competition
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3>My Role</h3>
+                <ul>
+                    <li>Created 4 UI assets in Adobe Illustrator with a cohesive steampunk-inspired aesthetic</li>
+                    <li>Co-designed 4 platformer game levels through iterative design sprints</li>
+                    <li>Led weekly team meetings to brainstorm, draft, and refine level designs</li>
+                    <li>Incorporated peer and playtester feedback to improve user experience</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Design Process</h3>
+                <p>The UI design went through multiple iterations, exploring different menu layouts, pause screen designs, and in-game UI elements. The steampunk aesthetic was chosen to complement the game's environmental themes while maintaining clear usability.</p>
+                <p>Level design involved careful consideration of difficulty curves, player guidance, and environmental storytelling. Each level was playtested multiple times and refined based on feedback.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>UI Design Explorations</h3>
+                <p>Various menu and UI concepts were explored, from ornate steampunk frames to minimalist modern designs. The final designs balanced aesthetic appeal with functional clarity.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Key Learnings</h3>
+                <p>This project taught me the importance of iterative design in game development, the value of playtesting early and often, and how to balance artistic vision with usability constraints in an interactive medium.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="greenway-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('greenway')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">GreenWay</h2>
+                <p class="modal-subtitle">UX Researcher & Designer | February 2025 – March 2025</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>The Problem</h3>
+                <p>Boston's MBTA Green Line commuters face numerous challenges including frequent delays, inconsistent train capacity, and difficulty navigating complex station layouts and surrounding areas. These pain points create stress and uncertainty for daily riders.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Research</h3>
+                <p>I conducted user research to identify key commuter pain points:</p>
+                <ul>
+                    <li>Unpredictable delays without clear communication</li>
+                    <li>Inconsistent train capacity leading to overcrowding</li>
+                    <li>Navigation challenges within stations and surrounding areas</li>
+                    <li>Lack of real-time service updates</li>
+                    <li>Difficulty planning alternative routes during disruptions</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section">
+                <h3>The Solution</h3>
+                <p>GreenWay is a mobile app designed to improve the Green Line commuter experience through real-time service updates, train capacity indicators, and enhanced wayfinding features including AR navigation within stations.</p>
+                <div class="highlight-box">
+                    <strong>Key Features:</strong> Real-time delay notifications, train capacity visualization, station wayfinding, and route planning
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Design Process</h3>
+                <p>The design evolved through three major iteration cycles, each incorporating peer feedback and collaborative problem-solving. Early wireframes focused on information hierarchy, while later iterations refined the visual design and interaction patterns.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Key Takeaways</h3>
+                <p>This project reinforced the importance of designing for real-world constraints and user stress. Features needed to be immediately accessible and understandable, especially during high-pressure commute situations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="sleep-survey-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('sleep-survey')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Sleep Survey</h2>
+                <p class="modal-subtitle">UX Researcher & Designer | March 2025 – April 2025</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Project Overview</h3>
+                <p>Sleep Survey is a dream documentation and analysis app designed to help users improve their sleep quality and overall wellbeing through structured journaling and AI-powered dream analysis.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Research Insights</h3>
+                <p>My research explored sleep-related stressors and their impact on wellbeing:</p>
+                <ul>
+                    <li>Psychological factors affecting sleep quality</li>
+                    <li>Impact of major life changes on sleep patterns</li>
+                    <li>Positive effects of sleep journaling on rest quality</li>
+                    <li>User interest in understanding dream patterns and meanings</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Key Finding:</strong> Regular sleep journaling showed significant positive impact on users' ability to identify stressors and improve sleep habits
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Design Solution</h3>
+                <p>The app features a calming purple color scheme designed to promote relaxation. Key features include a dream calendar for tracking patterns, journal entries with AI analysis, and personalized insights about sleep quality over time.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Iteration Process</h3>
+                <p>The prototype went through three iteration cycles. Early feedback revealed users wanted more guidance on what to journal about, leading to the addition of prompts and structured entry options. Later iterations focused on making the AI analysis more accessible and actionable.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Reflections</h3>
+                <p>Designing for wellness and mental health required careful consideration of tone, accessibility, and user emotional state. The project taught me the importance of creating safe, non-judgmental spaces in digital products.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h2>Let's Connect</h2>
+                <p>I'm always interested in new opportunities and collaborations</p>
+                <div class="contact-links">
+                    <a href="mailto:chau.gr@northeastern.edu" class="contact-btn">Email Me</a>
+                    <a href="https://www.linkedin.com/in/grchau/" target="_blank" class="contact-btn">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(projectId) {
+            document.getElementById(projectId + '-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(projectId) {
+            document.getElementById(projectId + '-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
