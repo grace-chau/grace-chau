@@ -120,13 +120,6 @@
             width: 100%;
             height: 250px;
             object-fit: cover;
-            background: linear-gradient(135deg, #7cb89d 0%, #a8d5ba 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: 700;
         }
 
         .project-content {
@@ -248,7 +241,7 @@
 
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -332,6 +325,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -359,7 +356,7 @@
             <h2 class="section-title">Featured Projects</h2>
             <div class="project-grid">
                 <div class="project-card" onclick="openModal('planet-pesto')">
-                    <div class="project-image">PP</div>
+                    <img src="images/DB.png" alt="Planet Pesto UI Frame" class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Planet Pesto</h3>
                         <p class="project-meta">UI & Level Designer | June 2025 – July 2025</p>
@@ -373,7 +370,7 @@
                 </div>
 
                 <div class="project-card" onclick="openModal('greenway')">
-                    <div class="project-image">GW</div>
+                    <img src="images/GreenWayLogo.png" alt="GreenWay Logo" class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">GreenWay</h3>
                         <p class="project-meta">UX Researcher & Designer | February 2025 – March 2025</p>
@@ -387,7 +384,7 @@
                 </div>
 
                 <div class="project-card" onclick="openModal('sleep-survey')">
-                    <div class="project-image">SS</div>
+                    <img src="images/SLogo.png" alt="Sleep Survey Logo" class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Sleep Survey</h3>
                         <p class="project-meta">UX Researcher & Designer | March 2025 – April 2025</p>
@@ -420,29 +417,44 @@
             </div>
 
             <div class="case-study-section">
-                <h3>My Role</h3>
-                <ul>
-                    <li>Created 4 UI assets in Adobe Illustrator with a cohesive steampunk-inspired aesthetic</li>
-                    <li>Co-designed 4 platformer game levels through iterative design sprints</li>
-                    <li>Led weekly team meetings to brainstorm, draft, and refine level designs</li>
-                    <li>Incorporated peer and playtester feedback to improve user experience</li>
-                </ul>
+                <h3>Gameplay & Level Design</h3>
+                <p>The game features a charming steampunk-inspired aesthetic set in various environments, from lush forests to industrial interiors. Players navigate through platforming challenges while learning about climate action.</p>
+                <div class="image-grid">
+                    <img src="images/PHV.png" alt="Forest level gameplay" class="case-study-image">
+                    <img src="images/PPPI.png" alt="Outdoor level gameplay" class="case-study-image">
+                    <img src="images/PPPI2.png" alt="Indoor level with NPC" class="case-study-image">
+                    <img src="images/PPPI3.png" alt="Dialogue with farmer character" class="case-study-image">
+                    <img src="images/PPPI4.png" alt="Character interaction scene" class="case-study-image">
+                    <img src="images/PPPI5.png" alt="Platforming gameplay" class="case-study-image">
+                </div>
             </div>
 
             <div class="case-study-section">
-                <h3>Design Process</h3>
-                <p>The UI design went through multiple iterations, exploring different menu layouts, pause screen designs, and in-game UI elements. The steampunk aesthetic was chosen to complement the game's environmental themes while maintaining clear usability.</p>
-                <p>Level design involved careful consideration of difficulty curves, player guidance, and environmental storytelling. Each level was playtested multiple times and refined based on feedback.</p>
+                <h3>UI Design Process</h3>
+                <p>The UI design went through extensive iteration, exploring different menu layouts, pause screen designs, and in-game UI elements. The steampunk aesthetic was chosen to complement the game's environmental themes while maintaining clear usability.</p>
+                <div class="image-grid">
+                    <img src="images/UMC1.png" alt="Pause menu with decorative frame" class="case-study-image">
+                    <img src="images/UMC2.png" alt="Menu design iterations" class="case-study-image">
+                    <img src="images/UMC3.png" alt="Final menu concepts" class="case-study-image">
+                </div>
             </div>
 
             <div class="case-study-section">
-                <h3>UI Design Explorations</h3>
-                <p>Various menu and UI concepts were explored, from ornate steampunk frames to minimalist modern designs. The final designs balanced aesthetic appeal with functional clarity.</p>
+                <h3>Steam Gauge UI Element</h3>
+                <p>One of the key UI assets I designed was the steam gauge, which serves as a resource meter in the game. Multiple iterations explored different visual approaches, from circular gauges to horizontal bars, each maintaining the steampunk aesthetic.</p>
+                <div class="image-grid">
+                    <img src="images/SGC1.png" alt="Steam gauge circular designs" class="case-study-image">
+                    <img src="images/SGC2.png" alt="Vertical gauge variations" class="case-study-image">
+                    <img src="images/SGC3.png" alt="Additional UI elements" class="case-study-image">
+                    <img src="images/SGC4.png" alt="Horizontal gauge designs" class="case-study-image">
+                    <img src="images/SGC5.png" alt="Steam canister concepts" class="case-study-image">
+                    <img src="images/SGC6.png" alt="Final gauge iterations" class="case-study-image">
+                </div>
             </div>
 
             <div class="case-study-section">
                 <h3>Key Learnings</h3>
-                <p>This project taught me the importance of iterative design in game development, the value of playtesting early and often, and how to balance artistic vision with usability constraints in an interactive medium.</p>
+                <p>This project taught me the importance of iterative design in game development, the value of playtesting early and often, and how to balance artistic vision with usability constraints in an interactive medium. Leading weekly team meetings also strengthened my collaboration and communication skills.</p>
             </div>
         </div>
     </div>
@@ -481,13 +493,25 @@
             </div>
 
             <div class="case-study-section">
+                <h3>Key Screens</h3>
+                <div class="image-grid">
+                    <img src="images/GW5.png" alt="GreenWay home screen with Green Line map" class="case-study-image">
+                    <img src="images/GW1.png" alt="Station details and features" class="case-study-image">
+                    <img src="images/GW2.png" alt="Train capacity visualization" class="case-study-image">
+                    <img src="images/GW3.png" alt="Station entrance wayfinding" class="case-study-image">
+                    <img src="images/GW4.png" alt="AR navigation feature" class="case-study-image">
+                    <img src="images/GW6.png" alt="Delay notification alert" class="case-study-image">
+                </div>
+            </div>
+
+            <div class="case-study-section">
                 <h3>Design Process</h3>
-                <p>The design evolved through three major iteration cycles, each incorporating peer feedback and collaborative problem-solving. Early wireframes focused on information hierarchy, while later iterations refined the visual design and interaction patterns.</p>
+                <p>The design evolved through three major iteration cycles, each incorporating peer feedback and collaborative problem-solving. Early wireframes focused on information hierarchy, while later iterations refined the visual design and interaction patterns to ensure critical information was immediately accessible during stressful commute situations.</p>
             </div>
 
             <div class="case-study-section">
                 <h3>Key Takeaways</h3>
-                <p>This project reinforced the importance of designing for real-world constraints and user stress. Features needed to be immediately accessible and understandable, especially during high-pressure commute situations.</p>
+                <p>This project reinforced the importance of designing for real-world constraints and user stress. Features needed to be immediately accessible and understandable, especially during high-pressure commute situations. The iterative process allowed us to refine the interface based on actual user needs rather than assumptions.</p>
             </div>
         </div>
     </div>
@@ -498,40 +522,88 @@
             <div class="modal-header">
                 <h2 class="modal-title">Sleep Survey</h2>
                 <p class="modal-subtitle">UX Researcher & Designer | March 2025 – April 2025</p>
+                <p class="modal-subtitle">Team: Grace Chau, Kayla, Kaitlin, Amelie</p>
             </div>
 
             <div class="case-study-section">
-                <h3>Project Overview</h3>
-                <p>Sleep Survey is a dream documentation and analysis app designed to help users improve their sleep quality and overall wellbeing through structured journaling and AI-powered dream analysis.</p>
-            </div>
-
-            <div class="case-study-section">
-                <h3>Research Insights</h3>
-                <p>My research explored sleep-related stressors and their impact on wellbeing:</p>
-                <ul>
-                    <li>Psychological factors affecting sleep quality</li>
-                    <li>Impact of major life changes on sleep patterns</li>
-                    <li>Positive effects of sleep journaling on rest quality</li>
-                    <li>User interest in understanding dream patterns and meanings</li>
-                </ul>
+                <h3>The Problem</h3>
+                <p>College students and young professionals (ages 18-25) face two interconnected challenges: lack of mental clarity upon waking up and the need for dream reflection in today's stressful environment. Stress and emotions cause irregular sleep patterns that affect dreaming and cause grogginess, making it difficult to start the day productively.</p>
                 <div class="highlight-box">
-                    <strong>Key Finding:</strong> Regular sleep journaling showed significant positive impact on users' ability to identify stressors and improve sleep habits
+                    <strong>Target Users:</strong> College students and post-grads with irregular sleep patterns or high stress levels who want to understand how daily stressors affect their sleep
                 </div>
             </div>
 
             <div class="case-study-section">
-                <h3>Design Solution</h3>
-                <p>The app features a calming purple color scheme designed to promote relaxation. Key features include a dream calendar for tracking patterns, journal entries with AI analysis, and personalized insights about sleep quality over time.</p>
+                <h3>Interaction Scenario</h3>
+                <p><em>A Northeastern student is exhausted from studying for finals and hasn't gotten much sleep recently. She wakes up from a nightmare and opens Sleep Survey as part of her morning routine. She logs her emotions upon waking up and writes briefly about her nightmare. The app prompts her with questions, and while answering them, she feels herself fully waking up. Satisfied with her log, she's now alert and ready to conquer her finals.</em></p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Research & Competitive Analysis</h3>
+                <p>I analyzed existing dream apps to identify opportunities for innovation:</p>
+                <ul>
+                    <li><strong>DreamApp:</strong> Uses algorithms and AI to analyze user input, provides dream symbol definitions</li>
+                    <li><strong>LucidScribe:</strong> Offers scientific tools for lucidity reactivation and dream incubation</li>
+                    <li><strong>Gap identified:</strong> No apps combined mental clarity enhancement with dream reflection specifically for stressed young adults</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Core Features & Design Solution</h3>
+                <p>Sleep Survey helps users achieve mental clarity through interactive morning reflection:</p>
+                <ul>
+                    <li><strong>Morning Log:</strong> Rate sleep quality and emotions upon waking</li>
+                    <li><strong>Dream Categorization:</strong> Log dreams as one of five types (dream, nightmare, lucid dream, recurring dream, or no dream)</li>
+                    <li><strong>Interactive Questioning:</strong> Answer prompts about dreams to increase alertness and understanding</li>
+                    <li><strong>AI Analysis:</strong> Receive psychological insights and emotion tags (fear, uncertainty, relief, anxiety)</li>
+                    <li><strong>Stressor Tracking:</strong> Connect daily life events to dream content (e.g., bad test grade → nightmare about future)</li>
+                    <li><strong>Calendar Visualization:</strong> Color-coded monthly view to identify sleep patterns</li>
+                </ul>
+                <p>The calming purple interface promotes relaxation while the structured prompts help users fully wake up and gain clarity.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3>User Flow</h3>
+                <div class="image-grid">
+                    <img src="images/SP1.png" alt="Sleep Survey splash screen" class="case-study-image">
+                    <img src="images/SP2.png" alt="Login screen" class="case-study-image">
+                    <img src="images/SP3.png" alt="Dream calendar with color-coded entries" class="case-study-image">
+                    <img src="images/SP5.png" alt="Account settings" class="case-study-image">
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Dream Journaling Experience</h3>
+                <div class="image-grid">
+                    <img src="images/SP4.png" alt="Journal entry screen" class="case-study-image">
+                    <img src="images/SP6.png" alt="Journal with AI assistant providing empathetic feedback" class="case-study-image">
+                    <img src="images/SP7.png" alt="Dream analysis with psychological insights" class="case-study-image">
+                    <img src="images/SP8.png" alt="Dream type selection prompt" class="case-study-image">
+                </div>
             </div>
 
             <div class="case-study-section">
                 <h3>Iteration Process</h3>
-                <p>The prototype went through three iteration cycles. Early feedback revealed users wanted more guidance on what to journal about, leading to the addition of prompts and structured entry options. Later iterations focused on making the AI analysis more accessible and actionable.</p>
+                <p>The design evolved through multiple iteration cycles with continuous team collaboration:</p>
+                <p><strong>First Iteration:</strong> Basic login, sleep rating feature, calendar view, and initial AI integration</p>
+                <p><strong>Final Iteration:</strong> Enhanced AI responses with empathetic tone, improved dream categorization system, refined calendar with better visual hierarchy, and more intuitive journal entry flow</p>
+                <p>User feedback revealed that the interactive questioning process successfully helped users wake up while the AI analysis provided meaningful insights into their emotional state.</p>
             </div>
 
             <div class="case-study-section">
-                <h3>Reflections</h3>
-                <p>Designing for wellness and mental health required careful consideration of tone, accessibility, and user emotional state. The project taught me the importance of creating safe, non-judgmental spaces in digital products.</p>
+                <h3>Challenges & Learnings</h3>
+                <p><strong>Design Challenges:</strong></p>
+                <ul>
+                    <li>Limited dream categories - no "other" option if user's dream doesn't fit the five provided types</li>
+                    <li>Accessibility concern - heavy reliance on color coding rather than shapes/symbols makes it less colorblind-friendly</li>
+                    <li>Balancing comprehensive features with simplicity for groggy morning users</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section">
+                <h3>Key Takeaways</h3>
+                <p>Designing for wellness and mental health required careful consideration of tone, timing, and user emotional state. The project taught me that thoughtful micro-interactions - like the AI's empathetic responses - can significantly impact user comfort during vulnerable moments. Creating safe, non-judgmental digital spaces requires balancing functionality with emotional intelligence in every design decision.</p>
+                <p>Working in a collaborative team environment also reinforced the value of diverse perspectives in ideation and the importance of iterative feedback in refining user experience.</p>
             </div>
         </div>
     </div>
