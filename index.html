@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grace Chau - UI/UX Designer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%232d5f3f'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='45' font-weight='bold' text-anchor='middle' dominant-baseline='central' fill='white'>GC</text></svg>">
     <style>
         * {
             margin: 0;
@@ -65,6 +66,68 @@
         body.dark-mode .dark-mode-toggle {
             background: #7cb89d;
             color: #1a1a1a;
+        }
+
+        .project-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e8f5e9;
+        }
+
+        body.dark-mode .project-navigation {
+            border-top-color: #3a3a3a;
+        }
+
+        .nav-project {
+            text-decoration: none;
+            color: #2d5f3f;
+            padding: 1rem 2rem;
+            border: 2px solid #2d5f3f;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-project:hover {
+            background: #2d5f3f;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-project.prev:hover {
+            transform: translateX(-5px);
+        }
+
+        body.dark-mode .nav-project {
+            color: #7cb89d;
+            border-color: #7cb89d;
+        }
+
+        body.dark-mode .nav-project:hover {
+            background: #7cb89d;
+            color: #1a1a1a;
+        }
+
+        .availability-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2d5f3f;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        body.dark-mode .availability-badge {
+            background: #2d5f3f;
+            color: #e0e0e0;
         }
 
         /* Dark Mode Styles */
@@ -615,6 +678,48 @@
             transform: scale(1.1);
         }
 
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 2rem;
+        }
+
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        .lightbox-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .lightbox-nav:disabled:hover {
+            transform: translateY(-50%) scale(1);
+            background: rgba(0,0,0,0.5);
+        }
+
         .figma-embed {
             width: 100%;
             height: 600px;
@@ -737,6 +842,7 @@
             <h1>Grace Chau</h1>
             <p>UI/UX Designer at Northeastern University</p>
             <p class="hero-subtitle">Crafting thoughtful digital experiences through research-driven design</p>
+            <div class="availability-badge">📅 Available for Co-op: January – June 2026</div>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>
                 <a href="#about" class="btn btn-secondary">About Me</a>
@@ -886,6 +992,11 @@
                 <h3>Key Learnings</h3>
                 <p>This project taught me the importance of iterative design in game development, the value of playtesting early and often, and how to balance artistic vision with usability constraints in an interactive medium. Leading weekly team meetings also strengthened my collaboration and communication skills.</p>
             </div>
+
+            <div class="project-navigation">
+                <span></span>
+                <a href="#greenway-modal" class="nav-project next" onclick="event.preventDefault(); closeModal('planet-pesto'); openModal('greenway');">Next Project: GreenWay →</a>
+            </div>
         </div>
     </div>
 
@@ -948,6 +1059,11 @@
                 <h3>Interactive Prototype</h3>
                 <p>Explore the full GreenWay prototype below:</p>
                 <iframe class="figma-embed" src="https://embed.figma.com/proto/ebv2tbKINsUIp0V0PGC1yz/GreenWay-App?node-id=2-859&p=f&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A859&embed-host=share" allowfullscreen></iframe>
+            </div>
+
+            <div class="project-navigation">
+                <a href="#planet-pesto-modal" class="nav-project prev" onclick="event.preventDefault(); closeModal('greenway'); openModal('planet-pesto');">← Previous: Planet Pesto</a>
+                <a href="#sleep-survey-modal" class="nav-project next" onclick="event.preventDefault(); closeModal('greenway'); openModal('sleep-survey');">Next Project: Sleep Survey →</a>
             </div>
         </div>
     </div>
@@ -1047,6 +1163,11 @@
                 <p>Explore the full Sleep Survey prototype below:</p>
                 <iframe class="figma-embed" src="https://embed.figma.com/proto/F1WxdVWhMPr8XcudAsaTD7/Sleep-Survey-App?node-id=0-1511&starting-point-node-id=0%3A733&embed-host=share" allowfullscreen></iframe>
             </div>
+
+            <div class="project-navigation">
+                <a href="#greenway-modal" class="nav-project prev" onclick="event.preventDefault(); closeModal('sleep-survey'); openModal('greenway');">← Previous: GreenWay</a>
+                <span></span>
+            </div>
         </div>
     </div>
 
@@ -1066,6 +1187,8 @@
 
     <div id="image-lightbox" class="image-lightbox">
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" onclick="navigateLightbox(1)">›</button>
         <img id="lightbox-image" class="lightbox-content" src="" alt="">
     </div>
 
@@ -1104,18 +1227,48 @@
         });
 
         // Image lightbox functionality
+        let currentImageIndex = 0;
+        let allImages = [];
+
         function openLightbox(imageSrc) {
             const lightbox = document.getElementById('image-lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
+            
+            // Get all case study images that are currently visible in the DOM
+            allImages = Array.from(document.querySelectorAll('.case-study-image'));
+            currentImageIndex = allImages.findIndex(img => img.src === imageSrc);
+            
             lightboxImage.src = imageSrc;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            updateNavigationButtons();
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('image-lightbox');
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) currentImageIndex = 0;
+            if (currentImageIndex >= allImages.length) currentImageIndex = allImages.length - 1;
+            
+            const lightboxImage = document.getElementById('lightbox-image');
+            lightboxImage.src = allImages[currentImageIndex].src;
+            
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+            
+            prevBtn.disabled = currentImageIndex === 0;
+            nextBtn.disabled = currentImageIndex === allImages.length - 1;
         }
 
         // Add click handlers to all case study images
@@ -1137,8 +1290,15 @@
 
         // Close lightbox with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
+            const lightbox = document.getElementById('image-lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                }
             }
         });
 
